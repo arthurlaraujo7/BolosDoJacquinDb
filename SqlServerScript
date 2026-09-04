@@ -1,0 +1,160 @@
+IF DB_ID('BolosDoJacquinDb') IS NULL
+BEGIN
+    CREATE DATABASE BolosDoJacquinDb;
+END
+GO
+
+
+USE BolosDoJacquinDb;
+GO
+
+
+IF OBJECT_ID('dbo.Avaliacoes', 'U')  IS NOT NULL DROP TABLE Avaliacoes;
+IF OBJECT_ID('dbo.Produtos', 'U')    IS NOT NULL DROP TABLE Produtos;
+IF OBJECT_ID('dbo.Categorias', 'U')  IS NOT NULL DROP TABLE Categorias;
+IF OBJECT_ID('dbo.Usuarios', 'U')    IS NOT NULL DROP TABLE Usuarios;
+IF OBJECT_ID('dbo.TipoUsuario', 'U') IS NOT NULL DROP TABLE TipoUsuario;
+GO
+
+
+/* ----------------------------------------------------------
+   1. Tabela: TipoUsuario
+   ---------------------------------------------------------- */
+
+CREATE TABLE TipoUsuario (
+    Id          INT IDENTITY(1,1) NOT NULL,
+    Nome        NVARCHAR(50)      NOT NULL,
+
+    CONSTRAINT PK_TipoUsuario PRIMARY KEY CLUSTERED (Id),
+    CONSTRAINT UQ_TipoUsuario_Nome UNIQUE (Nome)
+);
+GO
+
+
+/* ----------------------------------------------------------
+   2. Tabela: Usuarios
+   ---------------------------------------------------------- */
+
+
+CREATE TABLE Usuarios (
+    Id            UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(),
+    Nome          NVARCHAR(150)    NOT NULL,
+    Email         NVARCHAR(200)    NOT NULL,
+    SenhaHash     NVARCHAR(MAX)    NOT NULL,
+    TipoUsuarioId INT              NOT NULL, -- Relacionamento com TipoUsuario
+    Situacao      INT              NOT NULL CONSTRAINT DF_Usuarios_Situacao DEFAULT (0),
+    DataCadastro  DATETIME2        NOT NULL CONSTRAINT DF_Usuarios_DataCadastro DEFAULT (SYSUTCDATETIME()),
+
+    CONSTRAINT PK_Usuarios PRIMARY KEY CLUSTERED (Id),
+    CONSTRAINT UQ_Usuarios_Email UNIQUE (Email),
+    CONSTRAINT FK_Usuarios_TipoUsuario FOREIGN KEY (TipoUsuarioId)
+        REFERENCES dbo.TipoUsuario (Id),
+    CONSTRAINT CK_Usuarios_Situacao CHECK (Situacao IN (0, 1))
+);
+GO
+
+CREATE INDEX IX_Usuarios_TipoUsuarioId ON Usuarios (TipoUsuarioId);
+GO
+
+
+/* ----------------------------------------------------------
+   3. Tabela: Categorias
+   ---------------------------------------------------------- */
+
+
+CREATE TABLE Categorias (
+    Id   INT           IDENTITY(1,1) NOT NULL,
+    Nome NVARCHAR(100) NOT NULL,
+
+    CONSTRAINT PK_Categorias PRIMARY KEY CLUSTERED (Id),
+    CONSTRAINT UQ_Categorias_Nome UNIQUE (Nome)
+);
+GO
+
+/* ----------------------------------------------------------
+   4. Tabela: Produtos
+   ---------------------------------------------------------- */
+CREATE TABLE Produtos (
+    Id              INT             IDENTITY(1,1) NOT NULL,
+    Nome            NVARCHAR(150)   NOT NULL,
+    Preco           DECIMAL(10,2)   NOT NULL,
+    ImagemUrl       NVARCHAR(500)   NOT NULL,
+    CategoriaId     INT             NOT NULL,
+    DescricaoCurta  NVARCHAR(300)   NOT NULL,
+    DescricaoLonga  NVARCHAR(MAX)   NULL,
+    Disponibilidade BIT             NOT NULL CONSTRAINT DF_Produtos_Disponibilidade DEFAULT (1),
+    Situacao        INT             NOT NULL CONSTRAINT DF_Produtos_Situacao DEFAULT (0),
+
+    CONSTRAINT PK_Produtos PRIMARY KEY CLUSTERED (Id),
+    CONSTRAINT FK_Produtos_Categorias FOREIGN KEY (CategoriaId)
+        REFERENCES Categorias (Id),
+    CONSTRAINT CK_Produtos_Preco    CHECK (Preco >= 0),
+    CONSTRAINT CK_Produtos_Situacao CHECK (Situacao IN (0, 1))
+);
+GO
+
+CREATE INDEX IX_Produtos_CategoriaId ON Produtos (CategoriaId);
+GO
+
+/* ----------------------------------------------------------
+   5. Tabela: Avaliacoes
+   ---------------------------------------------------------- */
+CREATE TABLE Avaliacoes (
+    Id              INT              IDENTITY(1,1) NOT NULL,
+    Nota            INT              NOT NULL,
+    Comentario      NVARCHAR(1000)   NULL,
+    Situacao        INT              NOT NULL CONSTRAINT DF_Avaliacoes_Situacao DEFAULT (0),
+    MotivoOcultacao NVARCHAR(300)    NULL,
+    DataCriacao     DATETIME2        NOT NULL CONSTRAINT DF_Avaliacoes_DataCriacao DEFAULT (SYSUTCDATETIME()),
+    DataAlteracao   DATETIME2        NOT NULL CONSTRAINT DF_Avaliacoes_DataAlteracao DEFAULT (SYSUTCDATETIME()),
+    UsuarioId       UNIQUEIDENTIFIER NOT NULL, -- Compatível com o tipo de Usuarios.Id
+    ProdutoId       INT              NOT NULL,
+
+    CONSTRAINT PK_Avaliacoes PRIMARY KEY CLUSTERED (Id),
+    CONSTRAINT FK_Avaliacoes_Usuarios FOREIGN KEY (UsuarioId)
+        REFERENCES dbo.Usuarios (Id),
+    CONSTRAINT FK_Avaliacoes_Produtos FOREIGN KEY (ProdutoId)
+        REFERENCES dbo.Produtos (Id),
+    CONSTRAINT UQ_Avaliacoes_Usuario_Produto UNIQUE (UsuarioId, ProdutoId),
+    CONSTRAINT CK_Avaliacoes_Nota     CHECK (Nota BETWEEN 1 AND 5),
+    CONSTRAINT CK_Avaliacoes_Situacao CHECK (Situacao IN (0, 1))
+);
+GO
+
+CREATE INDEX IX_Avaliacoes_ProdutoId ON Avaliacoes (ProdutoId);
+CREATE INDEX IX_Avaliacoes_UsuarioId ON Avaliacoes (UsuarioId);
+GO
+
+-- 1. Tipos de Usuário
+INSERT INTO TipoUsuario (Nome) VALUES
+    (N'Administrador'), 
+    (N'Cliente');
+GO
+
+-- 2. Categorias
+INSERT INTO Categorias (Nome) VALUES
+    (N'Chocolate'), 
+    (N'Frutas'), 
+    (N'Macarons');
+GO
+
+-- 3. Usuários (TipoUsuarioId: 1 = Administrador, 2 = Cliente)
+INSERT INTO Usuarios (Nome, Email, SenhaHash, TipoUsuarioId, Situacao) VALUES
+    (N'Jacquin', N'jacquin@bolosdojacquin.com', N'<hash_gerado_pela_api>', 1, 0),
+    (N'Cliente Teste', N'cliente@teste.com', N'<hash_gerado_pela_api>', 2, 0);
+GO
+
+-- 4. Produtos
+INSERT INTO Produtos (Nome, Preco, ImagemUrl, CategoriaId, DescricaoCurta, DescricaoLonga, Disponibilidade, Situacao) VALUES
+    (N'Bolo de Chocolate Belga', 89.90, N'https://exemplo.com/img/bolo-chocolate.jpg',
+     1, N'Bolo de chocolate com cobertura cremosa',
+     N'Massa de chocolate belga, recheio de brigadeiro gourmet e cobertura de ganache.',
+     1, 0);
+GO
+
+
+SELECT * FROM TipoUsuario
+SELECT * FROM Usuarios
+SELECT * FROM Produtos
+SELECT * FROM Categorias
+SELECT * FROM Avaliacoes
