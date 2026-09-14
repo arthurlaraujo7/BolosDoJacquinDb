@@ -1,0 +1,137 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Avaliacao
+meta:
+  id: wrk_101978cc14c8475b80d411a20510abc3
+  created: 1789406917907
+  modified: 1789406917907
+  description: ""
+collection:
+  - url: https://localhost:7033/api/Avaliacao/6
+    name: DeletarAvaliacao
+    meta:
+      id: req_7cb4b87d55184329b1e9b2d3f12896e7
+      created: 1789407763800
+      modified: 1789412430178
+      isPrivate: false
+      description: ""
+      sortKey: -1789407763800
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Avaliacao/6
+    name: AtualizarAvaliacao
+    meta:
+      id: req_e9d262e9abe84105b4e01c9fbd57e87a
+      created: 1789407773200
+      modified: 1789412413062
+      isPrivate: false
+      description: ""
+      sortKey: -1789407773200
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": 6,
+        	"produtoId": 1,
+          "usuarioId": "EAE902ED-B52D-4C92-9FC9-EA2280F68CAA",
+          "nota": 5,
+          "comentario": "Comentário atualizado com sucesso via Insomnia!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Avaliacao/2
+    name: BuscarPorId
+    meta:
+      id: req_0c05ffae74fb414dbc572440ab6924c6
+      created: 1789407779653
+      modified: 1789412304794
+      isPrivate: false
+      description: ""
+      sortKey: -1789407779653
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Avaliacao
+    name: CadastrarAvaliacao
+    meta:
+      id: req_83a322f07d434d789368741f39ac78ca
+      created: 1789407783147
+      modified: 1789412307493
+      isPrivate: false
+      description: ""
+      sortKey: -1789407783147
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "produtoId": 1,
+          "usuarioId": "EAE902ED-B52D-4C92-9FC9-EA2280F68CAA",
+          "nota": 5,
+          "comentario": "Avaliação cadastrada com sucesso via Insomnia!"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Avaliacao
+    name: BuscarTodos
+    meta:
+      id: req_e6f6797a23734ae2b4107feecd5ee5aa
+      created: 1789407784687
+      modified: 1789411600204
+      isPrivate: false
+      description: ""
+      sortKey: -1789407784687
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_5eb9eb3c28657210049cae7c4b3dd81d7c70ef41
+    created: 1789406917909
+    modified: 1789406917909
+environments:
+  name: Base Environment
+  meta:
+    id: env_5eb9eb3c28657210049cae7c4b3dd81d7c70ef41
+    created: 1789406917908
+    modified: 1789406917908
+    isPrivate: false

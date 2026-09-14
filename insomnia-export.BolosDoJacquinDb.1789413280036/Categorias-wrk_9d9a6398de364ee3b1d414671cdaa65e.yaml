@@ -1,0 +1,131 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Categorias
+meta:
+  id: wrk_9d9a6398de364ee3b1d414671cdaa65e
+  created: 1789406925564
+  modified: 1789406925564
+  description: ""
+collection:
+  - url: https://localhost:7033/api/Categorias/6
+    name: DeletarCategoria
+    meta:
+      id: req_be3d9240d40348ffae99eb27d5c01dcc
+      created: 1789407787657
+      modified: 1789409628211
+      isPrivate: false
+      description: ""
+      sortKey: -1789407787657
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Categorias/1
+    name: AtualizarCategoria
+    meta:
+      id: req_47130d937ef442d896e4baad758804a7
+      created: 1789407792795
+      modified: 1789409608959
+      isPrivate: false
+      description: ""
+      sortKey: -1789407792795
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": 1,
+          "nome": "Bolos Recheados Gormet"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Categorias/1
+    name: BuscarPorId
+    meta:
+      id: req_97dad08e1d9e4e2b9719de60ad500468
+      created: 1789407794413
+      modified: 1789409590644
+      isPrivate: false
+      description: ""
+      sortKey: -1789407794413
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Categorias
+    name: CadastrarCategorias
+    meta:
+      id: req_d17453a191ef4a8bbfc231a2fdbaf2b6
+      created: 1789407795878
+      modified: 1789409543987
+      isPrivate: false
+      description: ""
+      sortKey: -1789407795878
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Bolos Recheados"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Categorias
+    name: BuscarTodos
+    meta:
+      id: req_359611d13bc4444a829b6e70bb526c55
+      created: 1789407797262
+      modified: 1789409525496
+      isPrivate: false
+      description: ""
+      sortKey: -1789407797262
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_36eabd718593a05f85b90bda77706a1c85a06ff9
+    created: 1789406925566
+    modified: 1789406925566
+environments:
+  name: Base Environment
+  meta:
+    id: env_36eabd718593a05f85b90bda77706a1c85a06ff9
+    created: 1789406925565
+    modified: 1789406925565
+    isPrivate: false

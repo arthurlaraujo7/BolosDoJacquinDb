@@ -1,0 +1,145 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Produtos
+meta:
+  id: wrk_27964763c9a34ac6938a7b29586592c1
+  created: 1789408186605
+  modified: 1789408186605
+  description: ""
+collection:
+  - url: https://localhost:7033/api/Produtos/3
+    name: DeletarProdutos
+    meta:
+      id: req_175aa1d49dfa4c908bea65f9645f05ce
+      created: 1789408197645
+      modified: 1789411544280
+      isPrivate: false
+      description: ""
+      sortKey: -1789408197645
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Produtos/1
+    name: AtualizarProdutos
+    meta:
+      id: req_c28fed79e8174ddb993796bf1ed8af7b
+      created: 1789408206429
+      modified: 1789411523820
+      isPrivate: false
+      description: ""
+      sortKey: -1789408206429
+    method: PUT
+    body:
+      mimeType: application/json
+      text: >-
+        {
+          "id": 1,
+          "nome": "Bolo Red Velvet Especial",
+          "preco": 75.00,
+          "imagemUrl": "https://res.cloudinary.com/nvov7mze/image/upload/v1789409836/bolos_jacquin/p4dzh1h6ajvkpwgmurub.webp",
+          "categoriaId": 1,
+          "descricaoCurta": "Edição especial de bolo red velvet.",
+          "descricaoLonga": "Massa aveludada de cacau leve com recheio duplo de cream cheese e frutas vermelhas.",
+          "disponibilidade": true,
+          "situacao": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Produtos/1
+    name: BuscarPorId
+    meta:
+      id: req_64a22c88855e4872b323386a56235bf3
+      created: 1789408208457
+      modified: 1789410066316
+      isPrivate: false
+      description: ""
+      sortKey: -1789408208457
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Produtos
+    name: CadastrarProduto
+    meta:
+      id: req_d2aa6f85d0c64256b103c518e800e9e2
+      created: 1789408211051
+      modified: 1789410039748
+      isPrivate: false
+      description: ""
+      sortKey: -1789408211051
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+          "nome": "Bolo Red Velvet Insomnia",
+          "preco": 68.90,
+          "imagemUrl": "https://res.cloudinary.com/nvov7mze/image/upload/v1789409836/bolos_jacquin/p4dzh1h6ajvkpwgmurub.webp",
+          "categoriaId": 1,
+          "descricaoCurta": "Bolo red velvet com recheio cream cheese.",
+          "descricaoLonga": "Massa aveludada de cacau leve com toque de baunilha e recheio cremoso de cream cheese.",
+          "disponibilidade": true,
+          "situacao": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Produtos
+    name: BuscarTodos
+    meta:
+      id: req_2b27b5baeb6843f5b2fa074f5ffb6ef1
+      created: 1789408213095
+      modified: 1789409975136
+      isPrivate: false
+      description: ""
+      sortKey: -1789408213095
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_337bf79bf32eeb02154b066f5630c8c41fe2679a
+    created: 1789408186617
+    modified: 1789408186617
+environments:
+  name: Base Environment
+  meta:
+    id: env_337bf79bf32eeb02154b066f5630c8c41fe2679a
+    created: 1789408186612
+    modified: 1789408186612
+    isPrivate: false

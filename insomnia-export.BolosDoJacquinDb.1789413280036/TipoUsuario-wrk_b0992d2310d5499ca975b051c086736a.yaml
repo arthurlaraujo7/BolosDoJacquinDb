@@ -1,0 +1,131 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: TipoUsuario
+meta:
+  id: wrk_b0992d2310d5499ca975b051c086736a
+  created: 1789406940956
+  modified: 1789406955375
+  description: ""
+collection:
+  - url: https://localhost:7033/api/TipoUsuario/9
+    name: DeletarTipoUsuario
+    meta:
+      id: req_850aaf7e427f43c79c5cf1f6efd246de
+      created: 1789407802723
+      modified: 1789409151328
+      isPrivate: false
+      description: ""
+      sortKey: -1789407802723
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/TipoUsuario/2
+    name: AtualizarTipoUsuario
+    meta:
+      id: req_42c87660306a432c96a16175855016a5
+      created: 1789407806503
+      modified: 1789409092489
+      isPrivate: false
+      description: ""
+      sortKey: -1789407806503
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": 2,
+          "nome": "Gerente Geral"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/TipoUsuario/2
+    name: BuscarPorId
+    meta:
+      id: req_aaaf33a8883d41b5a7d123b4daef41e0
+      created: 1789407809219
+      modified: 1789409001160
+      isPrivate: false
+      description: ""
+      sortKey: -1789407809219
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/TipoUsuario
+    name: CadastrarTipoUsuario
+    meta:
+      id: req_f30a5a758ef04baa876eabf9a2055530
+      created: 1789407811187
+      modified: 1789408961114
+      isPrivate: false
+      description: ""
+      sortKey: -1789407811187
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Atendente"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/TipoUsuario
+    name: BuscarTodos
+    meta:
+      id: req_2aa59f480231412c87e25747e974f633
+      created: 1789407813263
+      modified: 1789408751649
+      isPrivate: false
+      description: ""
+      sortKey: -1789407813263
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_86c5a5230efde9edb8b7044a58beaa79e74267d3
+    created: 1789406940959
+    modified: 1789406940959
+environments:
+  name: Base Environment
+  meta:
+    id: env_86c5a5230efde9edb8b7044a58beaa79e74267d3
+    created: 1789406940958
+    modified: 1789406940958
+    isPrivate: false

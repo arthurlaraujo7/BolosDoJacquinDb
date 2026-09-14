@@ -1,0 +1,138 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Usuarios
+meta:
+  id: wrk_0a1df034ddaa471cbbb2f5b814a57141
+  created: 1789406975314
+  modified: 1789406975314
+  description: ""
+collection:
+  - url: https://localhost:7033/api/Usuarios/0276bcfc-3b01-4b4c-abab-accdab3bbb2f
+    name: DeletarUsuarios
+    meta:
+      id: req_284a39cf0377481e872617c8088e33a7
+      created: 1789407822631
+      modified: 1789409387752
+      isPrivate: false
+      description: ""
+      sortKey: -1789407822631
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Usuarios/0276bcfc-3b01-4b4c-abab-accdab3bbb2f
+    name: AtualizarUsuarios
+    meta:
+      id: req_ad3ae6ce026e485bb4c899f8f25a7413
+      created: 1789407830990
+      modified: 1789409347542
+      isPrivate: false
+      description: ""
+      sortKey: -1789407830990
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "id": "0276bcfc-3b01-4b4c-abab-accdab3bbb2f",
+          "nome": "Teste Insomnia Atualizado",
+          "email": "teste.insomnia@gmail.com",
+          "senhaHash": "Insomnia123@",
+          "tipoUsuarioId": 1,
+          "situacao": 0
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Usuarios/5f38e7f3-4999-40c4-9cfa-3496c4bbb437
+    name: BuscarPorId
+    meta:
+      id: req_abfbaf8831984b44969a40f0952b362c
+      created: 1789407835438
+      modified: 1789409273298
+      isPrivate: false
+      description: ""
+      sortKey: -1789407835438
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Usuarios
+    name: CadastrarUsuarios
+    meta:
+      id: req_3b4789bb1b354867a1927aaffc6da31f
+      created: 1789407838465
+      modified: 1789409230317
+      isPrivate: false
+      description: ""
+      sortKey: -1789407838465
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "Teste Insomnia",
+          "email": "teste.insomnia@gmail.com",
+          "senhaHash": "Insomnia123@",
+          "tipoUsuarioId": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://localhost:7033/api/Usuarios
+    name: BuscarTodos
+    meta:
+      id: req_ed455a95da9a40e2978e711ec9d7f978
+      created: 1789407840455
+      modified: 1789409194201
+      isPrivate: false
+      description: ""
+      sortKey: -1789407840455
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_38f1757155b670abe78af7451abe1216647a2a55
+    created: 1789406975317
+    modified: 1789406975317
+environments:
+  name: Base Environment
+  meta:
+    id: env_38f1757155b670abe78af7451abe1216647a2a55
+    created: 1789406975315
+    modified: 1789406975315
+    isPrivate: false

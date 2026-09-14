@@ -1,0 +1,50 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Login
+meta:
+  id: wrk_53b3596d7730414688d45c5701868706
+  created: 1789407043821
+  modified: 1789407043821
+  description: ""
+collection:
+  - url: https://localhost:7033/api/Login
+    name: LoginUsuario
+    meta:
+      id: req_bf776c89070a471f92faf07cbbafeef1
+      created: 1789407447829
+      modified: 1789409439397
+      isPrivate: false
+      description: ""
+      sortKey: -1789407447829
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "arthur.l.araujo7@aluno.senai.br",
+          "senha": "ArthurSenai07@"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7866119667f7d8d5b6387dfd9127ba5dc7fa452d
+    created: 1789407043823
+    modified: 1789407043823
+environments:
+  name: Base Environment
+  meta:
+    id: env_7866119667f7d8d5b6387dfd9127ba5dc7fa452d
+    created: 1789407043822
+    modified: 1789407043822
+    isPrivate: false

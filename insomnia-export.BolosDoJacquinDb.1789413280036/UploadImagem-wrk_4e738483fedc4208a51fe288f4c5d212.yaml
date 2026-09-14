@@ -1,0 +1,52 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: UploadImagem
+meta:
+  id: wrk_4e738483fedc4208a51fe288f4c5d212
+  created: 1789407060079
+  modified: 1789407060079
+  description: ""
+collection:
+  - url: https://localhost:7033/api/Upload/imagem
+    name: UploadImagem
+    meta:
+      id: req_527ab75e156b47bfb9da3b55ffdceda1
+      created: 1789407458132
+      modified: 1789412519948
+      isPrivate: false
+      description: ""
+      sortKey: -1789407458132
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: arquivo
+          value: ""
+          description: ""
+          disabled: false
+          fileName: C:\Users\43189435855\Desktop\images.webp
+          type: file
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a4c1007759bd01494f6e790ac8ec3b82274b03e0
+    created: 1789407060082
+    modified: 1789407060082
+environments:
+  name: Base Environment
+  meta:
+    id: env_a4c1007759bd01494f6e790ac8ec3b82274b03e0
+    created: 1789407060080
+    modified: 1789407060080
+    isPrivate: false
